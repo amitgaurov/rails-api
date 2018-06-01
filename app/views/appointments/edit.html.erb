@@ -1,0 +1,32 @@
+<div class="container">   
+    
+  <%= form_for @appointment, url: {action: :update} do |f| %>   
+       
+     <h3>Add a Appointment</h3>   
+   <%= "<div>#{@appointment.errors.full_messages.first}</div>".html_safe if @appointment.errors.any? %>   
+      <p>   
+    
+       <div>   
+              <label>Patient Name</label>   
+              <%= f.text_field :patient_id, value: "#{current_patient.name}" %>   
+              
+       </div>   
+    
+       <div>   
+              <label>Doctor name</label>   
+              <%= f.collection_select :doctor_id, Doctor.all, :id,:name%>   
+       </div>   
+          
+       <div>   
+              <label>Timing</label>   
+              <%= f.text_field :timing %>   
+       </div>   
+    
+        </p>   
+     <div>   
+        <%= link_to 'Back', { controller: 'appointments', action: 'index'} %>   
+        <%= f.submit 'Update appointment' %>   
+      </div>   
+  <% end %>   
+</div>
+

@@ -1,0 +1,21 @@
+<header class="navbar navbar-fixed-top navbar-inverse">
+  <%= link_to "Welcome to Apolo healthcare ", root_path, id: "logo" %>
+    <nav>
+       <ul class="nav navbar-nav navbar-right">
+        <li><%= link_to "Home", root_path %></li>
+        <li><%= link_to "Help", root_path %></li>
+          <% if !patient_signed_in? && !doctor_signed_in? %> 
+        <li><%= link_to "Doctor login",  doctor_session_path %></li>
+        <li><%= link_to "Patient login", patient_session_path %></li>
+          <% elsif patient_signed_in? %>
+         <li><%= link_to "Patient logout", patient_session_path %></li>
+
+        
+
+           <% elsif doctor_signed_in? %>
+         <li><%= link_to "Doctor logout",  doctor_session_path %></li>
+           <% end %>
+        </ul>
+      </nav>
+  
+</header>

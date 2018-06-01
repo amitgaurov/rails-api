@@ -1,0 +1,22 @@
+<div class="container">        
+      <h3>Add a Appointment</h3>   
+     
+          <div>   
+            <label>Patient name</label>   
+            <%= @appointment.patient.name %>   
+          </div>   
+
+          <div>   
+            <label>Doctor Name </label>   
+            <%= @appointment.doctor.name %>   
+          </div>   
+          
+          <div>   
+            <label>Timing</label>   
+            <%= @appointment.timing %>   
+          </div>   
+       
+    <div>   
+      <%= link_to 'Back', { controller: 'appointments', action: 'index'} %>   
+    </div>   
+</div>  

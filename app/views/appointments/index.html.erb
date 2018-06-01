@@ -1,0 +1,46 @@
+<html>   
+<body>   
+ <div class="container">   
+    <% if doctor_signed_in? %>    
+    <h3>My Appointment</h3>
+    <% else %>
+    <h3>Appointment List</h3>
+    <% end %>
+  
+     <% if !doctor_signed_in? %>
+      <div> 
+       <%= link_to 'Book Appointment',  new_appointment_path %> 
+      </div>
+      <% end %>   
+      <br>   
+    <table border="2">   
+      <thead>   
+      <tr>   
+        <th>Doctor name</th>   
+        <th>Patient name</th>   
+        <th>Timing</th>   
+          
+      </tr>   
+      </thead>   
+      <tbody>   
+      <% @appointments.each do |appointment| %>   
+          <tr>  
+            <td><%= appointment.doctor.name %></td>  
+            <td><%= appointment.patient.name %></td>   
+            <td><%= appointment.timing %></td> 
+               <div>   
+               <td> 
+                <%= link_to 'Show', appointment_path(appointment) %>
+                <% if !doctor_signed_in? %>  
+                <%= link_to 'Edit', edit_appointment_path(appointment) %>   
+                <%= link_to 'Delete', appointment_path(appointment), method: :delete %>  
+                 <% end %>  
+              </div>   
+            </td>   
+          </tr>   
+      <% end %>   
+      </tbody>   
+    </table>   
+    </div>   
+  </body>   
+</html>  
